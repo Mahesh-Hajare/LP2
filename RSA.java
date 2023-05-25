@@ -8,15 +8,16 @@ class RSA {
 		int p, q, n, z, d = 0, e, i;
 
 		// The number to be encrypted and decrypted
-		int msg = 12;
+		System.out.println("Enter the number for encryption and decryption : ");
+		int msg=sc.nextInt();
 		double c;
 		BigInteger msgback;
-
-		// 1st prime number p
-		p = 3;
-
-		// 2nd prime number q
-		q = 11;
+		
+		System.out.prinln("Enter the first prime number : ");
+		p=sc.nextInt();
+		System.out.prinln("Enter the second prime number : ");
+		q=sc.nextInt();
+		
 		n = p * q;
 		z = (p - 1) * (q - 1);
 		System.out.println("the value of z = " + z);
@@ -24,12 +25,15 @@ class RSA {
 		for (e = 2; e < z; e++) {
 
 			// e is for public key exponent
-			if (gcd(e, z) == 1) {
+			if (gcd(e, z) == 1) 
+			{
 				break;
 			}
 		}
 		System.out.println("the value of e = " + e);
-		for (i = 0; i <= 9; i++) {
+		
+		for (i = 0; i <= 9; i++) 
+		{
 			int x = 1 + (i * z);
 
 			// d is for private key exponent
@@ -39,6 +43,7 @@ class RSA {
 			}
 		}
 		System.out.println("the value of d = " + d);
+		
 		c = (Math.pow(msg, e)) % n;
 		System.out.println("Encrypted message is : " + c);
 
